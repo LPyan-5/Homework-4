@@ -1,0 +1,207 @@
+//Exercise 1
+Given a number n ( n > 0 ). Print Fibonacci series up to n.
+
+function fibonacci(n){
+    if(n<=0){
+        console.log('Please enter positive numbers');
+        return;
+    }
+    if(n===1){
+        console.log(0);
+        return;
+    }
+    let arr=[0,1];
+    let i=2;
+    while(arr[i-1]+arr[i-2]<n){
+        arr.push(arr[i-1]+arr[i-2]);
+        i++;
+    }
+    console.log(arr);
+}
+fibonacci(7);
+fibonacci(45);
+fibonacci(1);
+fibonacci(0);
+fibonacci(18);
+
+
+//Exercise 2
+Write a program which will give you all of the potential combinations of a two-digit
+decimal combination, printed in a comma delimited format
+‘00’, ‘01’, ‘02’, …, ‘98’, ‘99’.
+
+function combination(){
+    for(let i=0; i<10; i++){
+        for(let j=0; j<10; j++){
+            console.log(`${i}${j},`);
+        }
+    }
+}
+
+combination();
+
+
+//Exercise 3
+Insert a number. Calculate product and sum of the digits of the number. If product is
+divisible by the sum, print the quotient, otherwise print the remainder.
+
+function div(n){
+    if(n===0){
+
+        console.log('Cannot calculate.');
+        return;
+    }
+    if(n<0){
+
+        n=-n;
+    }
+    let sum=0;
+    let p=1;
+    while(n>10){
+
+        sum+=n%10;
+        p*=n%10;
+        n=Math.floor(n/10);
+        
+    }
+    sum+=n;
+    p*=n;
+   
+    if(p%sum===0){
+
+        console.log('Quotient is '+p/sum+'.');
+    }
+    else{
+
+        console.log('Remainder is '+p%sum+'.');
+    }
+}
+div(-1233);
+div(1233);
+
+
+//Exercise 4
+Given an array of numbers. Find the maximum and minimum elements in array.
+Calculate their difference and check is there such an element in the array or not.
+
+function difCheck(arr){
+    
+    if(arr.length<=1){
+        console.log('Your array is too small.');
+        return;
+    }
+    let max=min=arr[0];
+    for(let i=1; i<arr.length; i++){
+        if(arr[i]<min){
+            min=arr[i];
+        }
+        else 
+        if(arr[i]>max){
+            max=arr[i];
+        }
+    }
+
+    let difference=max-min;
+    let k=false;
+    for(let i=0; i<arr.length; i++){
+        if(arr[i]===difference){
+            k=true;
+            console.log(k);
+            break;
+            
+           
+        }
+       
+        
+    }
+    if(k===false){
+        console.log(k);
+    }
+}
+difCheck([1,10,2,9,8,9]);
+difCheck([1,4,-43,12]);
+difCheck([1,0,5]);
+difCheck([1,1,5]);
+difCheck([2,4]);
+
+
+//Exercise 5
+Given an array of numbers. Find the index of the second maximum element.
+
+function secondMax(arr){
+    if(arr.length<=1){
+        console.log('Your arr is too small.');
+        return;
+    }
+  let max = arr[0];
+  let secondmax=-Infinity;
+    
+    for(let i=1;i<arr.length;i++){
+        if(arr[i]>max){
+            secondmax = max;
+            max = arr[i];
+        }
+        else 
+        if(arr[i]>secondmax && arr[i]!=max)
+            secondmax = arr[i];
+    }
+    
+    console.log(arr.indexOf(secondmax));
+}
+    secondMax([23, -98, 0, -456, 12, 8]);
+    secondMax([-60, 2, 43, -18, 5, -19, 36, 56, 56]);
+    secondMax([1,-5,-2]);
+    secondMax([2,3]);
+    secondMax([4,3]);
+    
+    
+//Exercise 6
+Given an array of numbers, padding amount and repeat count. Pad the array in the
+following way: the padding amount specifies how many elements should be taken from
+the array edges, the repeat amount specifies how many times the pad should be
+repeated. Also, you should check that padding amount &lt;= length of array.
+
+
+
+function paddingArr(arr,pad,repeat){
+
+    if(arr.length<pad){
+        console.log('Invalid padding amount.');
+        return;
+    }
+    let begin;
+    let b;
+    let end;
+    let e;
+    
+    begin=b=arr.slice(0,pad);
+    end=e=arr.slice(-pad);
+
+    for(let i=0; i<repeat-1; i++){
+
+    begin=begin.concat(b);
+    end=end.concat(e);
+    }
+    let newarr=begin.concat(arr,end);
+    console.log(newarr);
+}
+paddingArr([1,2,3,4],2,3);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

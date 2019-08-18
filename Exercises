@@ -162,7 +162,6 @@ the array edges, the repeat amount specifies how many times the pad should be
 repeated. Also, you should check that padding amount &lt;= length of array.
 
 
-
 function paddingArr(arr,pad,repeat){
 
     if(arr.length<pad){

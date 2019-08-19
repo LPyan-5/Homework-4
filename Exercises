@@ -168,6 +168,10 @@ function paddingArr(arr,pad,repeat){
         console.log('Invalid padding amount.');
         return;
     }
+    if(repeat===0){
+        console.log(arr);
+        return;
+    }
     let begin;
     let b;
     let end;
@@ -175,16 +179,19 @@ function paddingArr(arr,pad,repeat){
     
     begin=b=arr.slice(0,pad);
     end=e=arr.slice(-pad);
-
+    
     for(let i=0; i<repeat-1; i++){
 
     begin=begin.concat(b);
     end=end.concat(e);
     }
     let newarr=begin.concat(arr,end);
+
+   
     console.log(newarr);
 }
 paddingArr([1,2,3,4],2,3);
+paddingArr([1,2,3,4],1,0);
 
 
 
